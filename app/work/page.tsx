@@ -1,98 +1,198 @@
+import Link from "next/link";
+import {
+  Bot,
+  Boxes,
+  Microscope,
+  GraduationCap,
+  ArrowUpRight,
+  Calendar,
+} from "lucide-react";
+import RevealSection from "@/components/RevealSection";
+
+type Experience = {
+  company: string;
+  role: string;
+  dates: string;
+  icon: React.ReactNode;
+  bullets: React.ReactNode[];
+  tags: string[];
+  link?: { href: string; label: string };
+};
+
+function Tag({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center rounded-full bg-teal-50 px-2.5 py-1 text-xs font-medium text-teal-700 ring-1 ring-inset ring-teal-200">
+      {children}
+    </span>
+  );
+}
+
 export default function WorkPage() {
-    const roles = [
-      {
-        company: "Walmart Global Tech",
-        title: "Software Engineering Intern",
-        timeframe: "Summer 2025",
-        bullets: [
-          "Built an internal search and knowledge retrieval tool to help teams find relevant information faster.",
-          "Designed retrieval and ranking logic and documented architecture, tradeoffs, and evaluation approach.",
-          "Collaborated with engineers and stakeholders to refine requirements and ship iteratively.",
-        ],
-        tech: ["Python", "TypeScript", "LLMs", "Retrieval", "Azure"],
-      },
-      {
-        company: "ProcureSpark",
-        title: "Product, Design, and Engineering",
-        timeframe: "2025",
-        bullets: [
-          "Defined CRM data models and workflow logic to improve backend structure and system reliability.",
-          "Optimized database queries and schemas to reduce latency and improve responsiveness.",
-          "Worked closely with stakeholders to prioritize features and deliver an MVP.",
-        ],
-        tech: ["Python", "SQL", "Supabase", "APIs", "Data modeling"],
-      },
-      {
-        company: "STAR Lab, UC Irvine",
-        title: "Research Engineer",
-        timeframe: "2025 to present",
-        bullets: [
-          "Built and iterated on child focused digital health prototypes with user centered design practices.",
-          "Supported research workflows including prototyping, usability testing, and data analysis.",
-          "Contributed to research artifacts including demos, posters, and publications.",
-        ],
-        tech: ["Swift", "Prototyping", "HCI", "Qualitative methods"],
-      },
-      {
-        company: "University of Wyoming",
-        title: "Machine Learning Engineer",
-        timeframe: "2024",
-        bullets: [
-          "Developed machine learning experiments and data pipelines to support research goals.",
-          "Improved model evaluation and reporting for clearer insights and iteration.",
-        ],
-        tech: ["Python", "ML", "Data analysis"],
-      },
-    ];
-  
-    return (
-      <main className="mx-auto max-w-4xl px-6 py-16">
+  const experiences: Experience[] = [
+    {
+      company: "Walmart Global Tech",
+      role: "Software Engineering Intern (AI / RAG)",
+      dates: "Summer 2025",
+      icon: <Bot className="h-7 w-7 text-slate-400" />,
+      bullets: [
+        <>
+          Built a <strong>Retrieval-Augmented Generation (RAG) chatbot</strong> to help internal
+          teams quickly find answers across <strong>distributed enterprise documentation</strong>.
+        </>,
+        <>
+          Designed and implemented the full retrieval pipeline, including{" "}
+          <strong>chunking, embeddings, indexing, indexing, and ranking</strong>, improving response
+          relevance and answer quality.
+        </>,
+        <>
+          Collaborated with engineers to integrate the system into internal workflows and validate
+          performance with real use cases.
+        </>,
+      ],
+      tags: ["Python", "LangChain", "Azure OpenAI", "RAG", "SQL", "C++"],
+    },
+    {
+      company: "ProcureSpark",
+      role: "Product, Design, and Engineering Intern",
+      dates: "Spring 2025",
+      icon: <Boxes className="h-7 w-7 text-slate-400" />,
+      bullets: [
+        <>
+          Worked on a contractor-facing <strong>CRM platform</strong>, translating workflow and user
+          needs into concrete backend and UI improvements.
+        </>,
+        <>
+          Built and optimized <strong>backend data workflows</strong> using Python, SQL, and Supabase
+          to support scalable, real-time use.
+        </>,
+        <>
+          Developed <strong>React front-end components</strong> to improve usability, clarity, and
+          data flow across the product.
+        </>,
+        <>
+          Refactored schemas and queries to improve maintainability and make the system easier to
+          extend.
+        </>,
+      ],
+      tags: ["Product", "Design", "Python", "SQL", "Supabase", "React", "C++"],
+    },
+    {
+      company: "Social & Technological Action Research Group (STAR Lab), UC Irvine",
+      role: "Research Engineering Assistant",
+      dates: "September 2024 – Present",
+      icon: <Microscope className="h-7 w-7 text-slate-400" />,
+      bullets: [
+        <>
+          Built and iterated on <strong>research prototypes</strong> for neurodivergent children,
+          incorporating direct user feedback into design decisions.
+        </>,
+        <>
+          Supported studies using <strong>eye-tracking and sensory data</strong> tto inform interface
+          design and adaptive behaviors.
+        </>,
+        <>
+          Planned and ran <strong>usability testing and prototyping</strong>, leading to measurable
+          improvements in engagement.
+        </>,
+        <>
+          Contributed to <strong>peer-reviewed publications and conference presentations</strong> in
+          HCI and inclusive technology.
+        </>,
+      ],
+      tags: [
+        "HCI",
+        "Research",
+        "Eye Tracking",
+        "Sensor Data",
+        "Prototyping",
+        "Usability Testing",
+        "Inclusive Tech",
+        "AI",
+      ],
+      link: { href: "/research", label: "Learn more here" },
+    },
+    {
+      company: "University of Wyoming College of Engineering",
+      role: "Machine Learning Engineering Intern",
+      dates: "Summer 2024",
+      icon: <GraduationCap className="h-7 w-7 text-slate-400" />,
+      bullets: [
+        <>
+          Built <strong>ML-driven tools for educators</strong>, including dashboards and early risk
+          signals to support student engagement.
+        </>,
+        <>
+          Trained and evaluated models using <strong>Python and TensorFlow</strong>, iterating on
+          features and performance.
+        </>,
+        <>Worked with data pipelines and analysis workflows to support deployment and experimentation.</>,
+      ],
+      tags: ["Python", "TensorFlow", "Machine Learning", "Jupyter", "SQL", "C++"],
+    },
+  ];
+
+  return (
+    <main className="mx-auto max-w-4xl px-6 py-16">
+      <RevealSection>
         <header className="space-y-3">
           <h1 className="text-3xl font-semibold tracking-tight text-foreground">
-            Work
+            Work Experiences
           </h1>
           <p className="text-lg text-slate-600">
-            Selected experience across software engineering, product, research, and machine learning.
+            Experience building end-to-end systems across engineering, product, and research.
           </p>
         </header>
-  
-        <section className="mt-10 grid gap-4">
-          {roles.map((r) => (
-            <div
-              key={`${r.company}-${r.title}`}
-              className="rounded-xl border border-border bg-white/70 p-6"
-            >
-              <div className="flex flex-wrap items-baseline justify-between gap-2">
-                <div className="text-base font-semibold text-foreground">
-                  {r.company}
+      </RevealSection>
+
+      <section className="mt-10 grid gap-4">
+        {experiences.map((exp) => (
+          <RevealSection key={`${exp.company}-${exp.role}`}>
+            <div className="rounded-xl border border-border bg-white/70 p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start gap-3">
+                  <div className="mt-0.5">{exp.icon}</div>
+                  <div>
+                    <h2 className="text-base font-semibold text-foreground">
+                      {exp.company}
+                    </h2>
+                    <p className="mt-1 text-sm text-slate-600">{exp.role}</p>
+                  </div>
                 </div>
-                <div className="text-sm text-slate-500">{r.timeframe}</div>
+
+                <div className="inline-flex items-center gap-1 text-xs text-slate-500">
+                  <Calendar className="h-4 w-4" />
+                  {exp.dates}
+                </div>
               </div>
-  
-              <div className="mt-1 text-sm font-medium text-slate-700">
-                {r.title}
-              </div>
-  
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-600">
-                {r.bullets.map((b) => (
-                  <li key={b}>{b}</li>
+
+              <ul className="mt-4 space-y-2 text-sm text-slate-600">
+                {exp.bullets.map((b, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-slate-300" />
+                    <span>{b}</span>
+                  </li>
                 ))}
               </ul>
-  
-              <div className="mt-4 flex flex-wrap gap-2">
-                {r.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full bg-primary-soft px-2.5 py-1 text-xs font-medium text-foreground"
-                  >
-                    {t}
-                  </span>
+
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                {exp.tags.map((t) => (
+                  <Tag key={t}>{t}</Tag>
                 ))}
+
+                {exp.link ? (
+                  <Link
+                    href={exp.link.href}
+                    className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-slate-600 hover:text-foreground"
+                  >
+                    {exp.link.label}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </Link>
+                ) : null}
               </div>
             </div>
-          ))}
-        </section>
-      </main>
-    );
-  }
-  
+          </RevealSection>
+        ))}
+      </section>
+    </main>
+  );
+}

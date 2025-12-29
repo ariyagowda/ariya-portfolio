@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Manrope } from "next/font/google";
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,16 +31,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+    <html lang="en" className={manrope.variable}>
+      <body className="font-sans bg-background text-foreground">
+
         <nav className="p-6 flex flex-wrap gap-6 border-b">
           <a className="hover:underline" href="/">Home</a>
           <a className="hover:underline" href="/work">Work</a>
           <a className="hover:underline" href="/projects">Projects</a>
           <a className="hover:underline" href="/research">Research</a>
-          <a className="hover:underline" href="/entrepreneurship">Entrepreneurship</a>
+          <a className="hover:underline" href="/entrepreneurship">Entrepreneurship & Leadership</a>
           <a className="hover:underline" href="/about">About</a>
           <a className="hover:underline" href="/contact">Contact</a>
         </nav>
