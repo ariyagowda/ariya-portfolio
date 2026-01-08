@@ -17,6 +17,12 @@ export default function ResearchPage() {
       year: "2025",
       href: "https://dl.acm.org/doi/10.1145/3675094.3678365",
     },
+    {
+        title: "AudioBuddy: Demonstrating a Wearable and Mobile System Approach for Noise Sensitivity Awareness",
+        venue: "UbiComp Companion",
+        year: "2025",
+        href: "https://dl.acm.org/doi/10.1145/3714394.3754370",
+      },
   ];
 
   return (
